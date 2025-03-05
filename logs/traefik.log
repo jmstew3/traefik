@@ -1,0 +1,243 @@
+time="2025-02-09T22:48:14-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-09T22:48:14-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-09T22:48:14-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-09T22:48:14-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-09T22:48:14-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-09T22:48:14-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-09T22:48:14-06:00" level=info msg="Testing certificate renew..." providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-09T22:48:14-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-09T22:48:28-06:00" level=error msg="Unable to obtain ACME certificate for domains \"who.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: read udp 127.0.0.1:60233->127.0.0.11:53: i/o timeout" providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory" routerName=whoami@docker rule="Host(`who.mehouse.casa`)"
+time="2025-02-09T22:58:24-06:00" level=warning msg="Error checking new version: Get \"https://update.traefik.io/repos/traefik/traefik/releases\": dial tcp: lookup update.traefik.io on 127.0.0.11:53: read udp 127.0.0.1:52369->127.0.0.11:53: i/o timeout"
+time="2025-02-10T01:04:26-06:00" level=info msg="I have to go..."
+time="2025-02-10T01:04:26-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-10T01:04:26-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-10T01:04:26-06:00" level=error msg="Error while starting server: accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-10T01:04:26-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-10T01:04:26-06:00" level=error msg="Error while starting server: accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-10T01:04:26-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-10T01:04:26-06:00" level=error msg="Error while starting server: accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-10T01:04:26-06:00" level=info msg="Server stopped"
+time="2025-02-10T01:04:26-06:00" level=info msg="Shutting down"
+time="2025-02-10T01:04:59-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-10T01:04:59-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-10T01:04:59-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-10T01:04:59-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-10T01:04:59-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-10T01:04:59-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-10T01:04:59-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-10T01:04:59-06:00" level=info msg="Testing certificate renew..." ACME CA="https://acme-v02.api.letsencrypt.org/directory" providerName=le.acme
+time="2025-02-10T01:05:11-06:00" level=error msg="Unable to obtain ACME certificate for domains \"who.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: read udp 127.0.0.1:47999->127.0.0.11:53: i/o timeout" routerName=whoami@docker rule="Host(`who.mehouse.casa`)" providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-10T01:06:15-06:00" level=info msg="I have to go..."
+time="2025-02-10T01:06:15-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-10T01:06:15-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-10T01:06:15-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-10T01:06:15-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-10T01:06:15-06:00" level=error msg="close tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-10T01:06:15-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-10T01:06:15-06:00" level=error msg="close tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-10T01:06:15-06:00" level=info msg="Server stopped"
+time="2025-02-10T01:06:15-06:00" level=info msg="Shutting down"
+time="2025-02-10T01:06:26-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-10T01:06:26-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-10T01:06:26-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-10T01:06:26-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-10T01:06:26-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-10T01:06:26-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-10T01:06:26-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-10T01:06:26-06:00" level=info msg="Testing certificate renew..." ACME CA="https://acme-v02.api.letsencrypt.org/directory" providerName=le.acme
+time="2025-02-10T01:06:31-06:00" level=info msg="I have to go..."
+time="2025-02-10T01:06:31-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-10T01:06:31-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-10T01:06:31-06:00" level=error msg="close tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-10T01:06:31-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-10T01:06:31-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-10T01:06:31-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-10T01:06:31-06:00" level=error msg="close tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-10T01:06:31-06:00" level=info msg="Server stopped"
+time="2025-02-10T01:06:31-06:00" level=info msg="Shutting down"
+time="2025-02-10T01:06:35-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-10T01:06:35-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-10T01:06:35-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-10T01:06:35-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-10T01:06:35-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-10T01:06:35-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-10T01:06:35-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-10T01:06:35-06:00" level=info msg="Testing certificate renew..." providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-10T01:07:20-06:00" level=error msg="Unable to obtain ACME certificate for domains \"who.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: read udp 127.0.0.1:51956->127.0.0.11:53: i/o timeout" ACME CA="https://acme-v02.api.letsencrypt.org/directory" routerName=whoami@docker rule="Host(`who.mehouse.casa`)" providerName=le.acme
+time="2025-02-10T01:16:45-06:00" level=warning msg="Error checking new version: Get \"https://update.traefik.io/repos/traefik/traefik/releases\": dial tcp: lookup update.traefik.io on 127.0.0.11:53: read udp 127.0.0.1:59490->127.0.0.11:53: i/o timeout"
+time="2025-02-10T01:53:11-06:00" level=info msg="I have to go..."
+time="2025-02-10T01:53:11-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-10T01:53:11-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-10T01:53:11-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-10T01:53:11-06:00" level=error msg="close tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-10T01:53:11-06:00" level=error msg="close tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-10T01:53:11-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-10T01:53:11-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-10T01:53:11-06:00" level=info msg="Server stopped"
+time="2025-02-10T01:53:11-06:00" level=info msg="Shutting down"
+time="2025-02-12T10:42:42-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-12T10:42:42-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-12T10:42:42-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-12T10:42:42-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-12T10:42:42-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-12T10:42:42-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-12T10:42:42-06:00" level=info msg="Testing certificate renew..." providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-12T10:42:42-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-12T10:42:55-06:00" level=error msg="Unable to obtain ACME certificate for domains \"who.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: read udp 127.0.0.1:47109->127.0.0.11:53: i/o timeout" providerName=le.acme routerName=whoami@docker rule="Host(`who.mehouse.casa`)" ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-12T10:52:52-06:00" level=warning msg="Error checking new version: Get \"https://update.traefik.io/repos/traefik/traefik/releases\": dial tcp: lookup update.traefik.io on 127.0.0.11:53: read udp 127.0.0.1:42343->127.0.0.11:53: i/o timeout"
+time="2025-02-12T11:04:26-06:00" level=info msg="I have to go..."
+time="2025-02-12T11:04:26-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-12T11:04:26-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-12T11:04:26-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-12T11:04:26-06:00" level=error msg="close tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-12T11:04:26-06:00" level=error msg="Error while starting server: accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-12T11:04:26-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-12T11:04:26-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-12T11:04:26-06:00" level=info msg="Server stopped"
+time="2025-02-12T11:04:26-06:00" level=info msg="Shutting down"
+time="2025-02-12T11:04:43-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-12T11:04:43-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-12T11:04:43-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-12T11:04:43-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-12T11:04:43-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-12T11:04:43-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-12T11:04:43-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-12T11:04:43-06:00" level=info msg="Testing certificate renew..." providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-12T11:05:01-06:00" level=error msg="Unable to obtain ACME certificate for domains \"who.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: read udp 127.0.0.1:44581->127.0.0.11:53: i/o timeout" rule="Host(`who.mehouse.casa`)" providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory" routerName=whoami@docker
+time="2025-02-12T11:14:53-06:00" level=warning msg="Error checking new version: Get \"https://update.traefik.io/repos/traefik/traefik/releases\": dial tcp: lookup update.traefik.io on 127.0.0.11:53: read udp 127.0.0.1:43008->127.0.0.11:53: i/o timeout"
+time="2025-02-12T11:29:31-06:00" level=info msg="I have to go..."
+time="2025-02-12T11:29:31-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-12T11:29:31-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-12T11:29:31-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-12T11:29:31-06:00" level=error msg="close tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-12T11:29:31-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-12T11:29:31-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-12T11:29:31-06:00" level=error msg="close tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-12T11:29:32-06:00" level=info msg="Server stopped"
+time="2025-02-12T11:29:32-06:00" level=info msg="Shutting down"
+time="2025-02-25T03:25:49-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-25T03:25:49-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-25T03:25:49-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-25T03:25:49-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-25T03:25:49-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-25T03:25:49-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-25T03:25:49-06:00" level=info msg="Testing certificate renew..." providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-25T03:25:49-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-25T03:35:59-06:00" level=warning msg="Error checking new version: Get \"https://update.traefik.io/repos/traefik/traefik/releases\": dial tcp: lookup update.traefik.io on 127.0.0.11:53: read udp 127.0.0.1:43562->127.0.0.11:53: i/o timeout"
+time="2025-02-25T05:20:48-06:00" level=info msg="I have to go..."
+time="2025-02-25T05:20:48-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-25T05:20:48-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-25T05:20:48-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-25T05:20:48-06:00" level=error msg="close tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-25T05:20:48-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-25T05:20:48-06:00" level=error msg="close tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-25T05:20:48-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-25T05:20:48-06:00" level=info msg="Server stopped"
+time="2025-02-25T05:20:48-06:00" level=info msg="Shutting down"
+time="2025-02-28T00:54:56-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-28T00:54:56-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-28T00:54:56-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-28T00:54:56-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-28T00:54:56-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-28T00:54:56-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-28T00:54:56-06:00" level=info msg="Testing certificate renew..." providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-28T00:54:56-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-28T01:05:06-06:00" level=warning msg="Error checking new version: Get \"https://update.traefik.io/repos/traefik/traefik/releases\": dial tcp: lookup update.traefik.io on 127.0.0.11:53: read udp 127.0.0.1:50233->127.0.0.11:53: i/o timeout"
+time="2025-02-28T01:12:37-06:00" level=info msg="I have to go..."
+time="2025-02-28T01:12:37-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-28T01:12:37-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T01:12:37-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T01:12:37-06:00" level=error msg="Error while starting server: accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T01:12:37-06:00" level=error msg="Error while starting server: accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T01:12:37-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T01:12:37-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T01:12:37-06:00" level=info msg="Server stopped"
+time="2025-02-28T01:12:37-06:00" level=info msg="Shutting down"
+time="2025-02-28T01:12:39-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-28T01:12:39-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-28T01:12:39-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-28T01:12:39-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-28T01:12:39-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-28T01:12:39-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-28T01:12:39-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-28T01:12:39-06:00" level=info msg="Testing certificate renew..." ACME CA="https://acme-v02.api.letsencrypt.org/directory" providerName=le.acme
+time="2025-02-28T01:18:38-06:00" level=info msg="I have to go..."
+time="2025-02-28T01:18:38-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-28T01:18:38-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T01:18:38-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T01:18:38-06:00" level=error msg="close tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T01:18:38-06:00" level=error msg="Error while starting server: accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T01:18:38-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T01:18:38-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T01:18:38-06:00" level=info msg="Server stopped"
+time="2025-02-28T01:18:38-06:00" level=info msg="Shutting down"
+time="2025-02-28T01:18:40-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-28T01:18:40-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-28T01:18:40-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-28T01:18:40-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-28T01:18:40-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-28T01:18:40-06:00" level=info msg="Testing certificate renew..." ACME CA="https://acme-v02.api.letsencrypt.org/directory" providerName=le.acme
+time="2025-02-28T01:18:40-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-28T01:18:40-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-28T01:28:50-06:00" level=warning msg="Error checking new version: Get \"https://update.traefik.io/repos/traefik/traefik/releases\": dial tcp: lookup update.traefik.io on 127.0.0.11:53: read udp 127.0.0.1:39788->127.0.0.11:53: i/o timeout"
+time="2025-02-28T01:43:40-06:00" level=error msg="Unable to obtain ACME certificate for domains \"tools.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: read udp 127.0.0.1:60490->127.0.0.11:53: i/o timeout" rule="Host(`tools.mehouse.casa`)" providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory" routerName=it-tools@docker
+time="2025-02-28T02:09:40-06:00" level=warning msg="Could not retrieve CanonizedHost, rejecting "
+time="2025-02-28T02:29:08-06:00" level=info msg="I have to go..."
+time="2025-02-28T02:29:08-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-28T02:29:08-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T02:29:08-06:00" level=error msg="Error while starting server: accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T02:29:08-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T02:29:08-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T02:29:08-06:00" level=error msg="close tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T02:29:08-06:00" level=error msg="close tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T02:29:08-06:00" level=info msg="Server stopped"
+time="2025-02-28T02:29:08-06:00" level=info msg="Shutting down"
+time="2025-02-28T02:29:09-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-28T02:29:09-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-28T02:29:09-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-28T02:29:09-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-28T02:29:09-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-28T02:29:09-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-28T02:29:09-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-28T02:29:09-06:00" level=info msg="Testing certificate renew..." providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory"
+time="2025-02-28T02:29:24-06:00" level=error msg="Unable to obtain ACME certificate for domains \"tools.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: read udp 127.0.0.1:60590->127.0.0.11:53: i/o timeout" providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory" routerName=it-tools@docker rule="Host(`tools.mehouse.casa`)"
+time="2025-02-28T02:39:19-06:00" level=warning msg="Error checking new version: Get \"https://update.traefik.io/repos/traefik/traefik/releases\": dial tcp: lookup update.traefik.io on 127.0.0.11:53: read udp 127.0.0.1:50334->127.0.0.11:53: i/o timeout"
+time="2025-02-28T03:57:39-06:00" level=warning msg="Could not retrieve CanonizedHost, rejecting "
+time="2025-02-28T04:03:44-06:00" level=info msg="I have to go..."
+time="2025-02-28T04:03:44-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-28T04:03:44-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T04:03:44-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T04:03:44-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T04:03:44-06:00" level=error msg="Error while starting server: accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T04:03:44-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T04:03:44-06:00" level=error msg="close tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T04:03:45-06:00" level=info msg="Server stopped"
+time="2025-02-28T04:03:45-06:00" level=info msg="Shutting down"
+time="2025-02-28T04:03:46-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-28T04:03:46-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-28T04:03:46-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-28T04:03:46-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-28T04:03:46-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-28T04:03:46-06:00" level=info msg="Testing certificate renew..." ACME CA="https://acme-v02.api.letsencrypt.org/directory" providerName=le.acme
+time="2025-02-28T04:03:46-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-28T04:03:46-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-28T04:03:58-06:00" level=error msg="Unable to obtain ACME certificate for domains \"tools.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: read udp 127.0.0.1:48850->127.0.0.11:53: i/o timeout" rule="Host(`tools.mehouse.casa`)" providerName=le.acme ACME CA="https://acme-v02.api.letsencrypt.org/directory" routerName=it-tools@docker
+time="2025-02-28T04:06:20-06:00" level=info msg="I have to go..."
+time="2025-02-28T04:06:20-06:00" level=info msg="Stopping server gracefully"
+time="2025-02-28T04:06:20-06:00" level=error msg="accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T04:06:20-06:00" level=error msg="Error while starting server: accept tcp [::]:8080: use of closed network connection" entryPointName=traefik
+time="2025-02-28T04:06:20-06:00" level=error msg="accept tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T04:06:20-06:00" level=error msg="accept tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T04:06:20-06:00" level=error msg="close tcp [::]:80: use of closed network connection" entryPointName=web
+time="2025-02-28T04:06:20-06:00" level=error msg="close tcp [::]:443: use of closed network connection" entryPointName=websecure
+time="2025-02-28T04:06:20-06:00" level=info msg="Server stopped"
+time="2025-02-28T04:06:20-06:00" level=info msg="Shutting down"
+time="2025-02-28T04:06:35-06:00" level=info msg="Traefik version 2.11.20 built on 2025-01-31T14:21:19Z"
+time="2025-02-28T04:06:35-06:00" level=info msg="\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"
+time="2025-02-28T04:06:35-06:00" level=info msg="Starting provider aggregator *aggregator.ProviderAggregator"
+time="2025-02-28T04:06:35-06:00" level=info msg="Starting provider *traefik.Provider"
+time="2025-02-28T04:06:35-06:00" level=info msg="Starting provider *docker.Provider"
+time="2025-02-28T04:06:35-06:00" level=info msg="Starting provider *acme.Provider"
+time="2025-02-28T04:06:35-06:00" level=info msg="Testing certificate renew..." ACME CA="https://acme-v02.api.letsencrypt.org/directory" providerName=le.acme
+time="2025-02-28T04:06:35-06:00" level=info msg="Starting provider *acme.ChallengeTLSALPN"
+time="2025-02-28T04:06:48-06:00" level=error msg="Unable to obtain ACME certificate for domains \"tools.mehouse.casa\": cannot get ACME client get directory at 'https://acme-v02.api.letsencrypt.org/directory': Get \"https://acme-v02.api.letsencrypt.org/directory\": dial tcp: lookup acme-v02.api.letsencrypt.org on 127.0.0.11:53: server misbehaving" ACME CA="https://acme-v02.api.letsencrypt.org/directory" providerName=le.acme routerName=it-tools@docker rule="Host(`tools.mehouse.casa`)"

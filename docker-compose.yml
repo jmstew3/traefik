@@ -1,25 +1,33 @@
-name: traefik
-# https://doc.traefik.io/traefik/
 services:
   traefik:
-    image: docker.io/library/traefik:2.11.2
+    image: traefik:v2.11           # Using Traefik 2.11 per your update
     container_name: traefik
+    restart: always
     ports:
-      - 83:80
-      - 444:443
-      # -- (Optional) Enable Dashboard, don't do in production
-      - 8085:8080
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./config:/etc/traefik
-    # -- (Optional) When using Cloudflare as Cert Resolver
+      - "22543:443"                # HTTPS (websecure) exposed externally
+      # Dashboard bound to the internal interface only.
+      # Replace "127.0.0.1" with the internal IP if needed.
+      - "192.168.1.225:8085:8080"      # Traefik dashboard (internal access only)
+      - "22580:80"                  # HTTP used only for redirection to HTTPS
     environment:
-      - CF_API_EMAIL=xxx@example.com
-      - CF_DNS_API_TOKEN=xxx
-    # -- (Optional) When using a custom network
+      - CF_DNS_API_TOKEN=${CF_API_TOKEN}  # <-- Replace with your Cloudflare DNS API token
+      - TZ=America/Chicago   # Set timezone to Central Time (Chicago)
+    command:
+      - --configFile=/config/traefik.yaml           # Point to the static config file
+      - --providers.file.filename=/config/dynamic.yml
+    volumes:
+      - ./config/traefik.yaml:/config/traefik.yaml:ro  # Mount static config (read-only)
+      - ./config/dynamic.yml:/config/dynamic.yml:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # Enable Docker provider
+      - ./acme:/acme                                  # Mount the ACME storage folder
+      - ./logs:/logs                                  # Mount logs folder for Traefik logs and access logs
+      - /etc/localtime:/etc/localtime:ro              # Mount localtime
+      - /etc/timezone:/etc/timezone:ro                # Mount timezone
     networks:
-      - proxy
+      - proxy-general
+    dns:
+      - 1.1.1.1
 
 networks:
-  proxy:
-    external: true
+  proxy-general:
+    driver: bridge
