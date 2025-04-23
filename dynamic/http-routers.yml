@@ -1,0 +1,17 @@
+http:
+  routers:
+    # Define a router for your main domain
+    mydomain-router:
+      rule: "Host(`mehouse.casa`)" # Rule to match your domain
+      entryPoints:
+        - websecure          # Listen on the HTTPS entrypoint
+      service: noop@internal # Point to a dummy service (will result in 404)
+      tls: {}                # Enable TLS for this router (uses default cert)
+
+    # Optional: Add a router for the www subdomain if needed
+    # mydomain-www-router:
+    #   rule: "Host(`www.mehouse.casa`)"
+    #   entryPoints:
+    #     - websecure
+    #   service: noop@internal
+    #   tls: {}

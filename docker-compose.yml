@@ -1,33 +1,65 @@
+version: "3.8"
+
 services:
   traefik:
-    image: traefik:v2.11           # Using Traefik 2.11 per your update
+    image: traefik:v2.11 # Consider using a newer version like v3.x if appropriate
     container_name: traefik
-    restart: always
-    ports:
-      - "22543:443"                # HTTPS (websecure) exposed externally
-      # Dashboard bound to the internal interface only.
-      # Replace "127.0.0.1" with the internal IP if needed.
-      - "192.168.1.225:8085:8080"      # Traefik dashboard (internal access only)
-      - "22580:80"                  # HTTP used only for redirection to HTTPS
-    environment:
-      - CF_DNS_API_TOKEN=${CF_API_TOKEN}  # <-- Replace with your Cloudflare DNS API token
-      - TZ=America/Chicago   # Set timezone to Central Time (Chicago)
-    command:
-      - --configFile=/config/traefik.yaml           # Point to the static config file
-      - --providers.file.filename=/config/dynamic.yml
-    volumes:
-      - ./config/traefik.yaml:/config/traefik.yaml:ro  # Mount static config (read-only)
-      - ./config/dynamic.yml:/config/dynamic.yml:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro  # Enable Docker provider
-      - ./acme:/acme                                  # Mount the ACME storage folder
-      - ./logs:/logs                                  # Mount logs folder for Traefik logs and access logs
-      - /etc/localtime:/etc/localtime:ro              # Mount localtime
-      - /etc/timezone:/etc/timezone:ro                # Mount timezone
-    networks:
-      - proxy-general
-    dns:
-      - 1.1.1.1
+    restart: unless-stopped
 
-networks:
-  proxy-general:
-    driver: bridge
+    command:
+      - "--providers.docker=true"
+      - "--providers.file.directory=/dynamic"
+      - "--providers.file.watch=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--api.dashboard=true" # Enable the dashboard
+      - "--api.insecure=true" # Make dashboard accessible without auth (suitable for internal access)
+      # - "--accesslog=true" # Disable stdout access log
+      - "--accesslog.filepath=/logs/access.log" # Enable access log file
+      # Add other static configurations if needed, e.g., logs
+
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080" # Expose dashboard port internally
+
+    volumes:
+      # Mount Docker socket
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Mount dynamic configuration directory relative to docker-compose.yml
+      - ./dynamic:/dynamic:ro
+      # Mount certificates directory relative to docker-compose.yml
+      - ./certs:/certs:ro
+      # Mount logs directory
+      - ./logs:/logs
+      # Optional: Mount log file or directory
+      - ./logs/traefik.log:/traefik.log
+
+    # Optional: Add labels for Traefik dashboard if desired
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.yourdomain.com`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+    #   - "traefik.http.routers.traefik-dashboard.service=api@internal"
+    #   - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
+    #   - "traefik.http.routers.traefik-dashboard.tls=true"
+    #   # Optional: Add middleware for basic auth
+    #   # - "traefik.http.routers.traefik-dashboard.middlewares=auth"
+    #   # - "traefik.http.middlewares.auth.basicauth.users=user:$$apr1$$...$$" # Generate with htpasswd
+
+  whoami:
+    image: traefik/whoami # A simple service that returns request information
+    container_name: whoami
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      # Define the router rule for the subdomain
+      - "traefik.http.routers.whoami.rule=Host(`who.mehouse.casa`)"
+      # Use the websecure entrypoint (HTTPS)
+      - "traefik.http.routers.whoami.entrypoints=websecure"
+      # Enable TLS for this router (uses the default certificate defined in tls.yml)
+      - "traefik.http.routers.whoami.tls=true"
+
+# Optional: Define networks if needed
+# networks:
+#   default:
+#     name: traefik-net
