@@ -1,72 +1,53 @@
 version: "3.8"
 
 services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
+    networks:
+      - traefik-private
+
   traefik:
-    image: traefik:latest # Consider using a newer version like v3.x if appropriate
+    image: traefik:latest
     container_name: traefik
     restart: unless-stopped
-
     command:
       - "--providers.docker=true"
       - "--providers.file.directory=/dynamic"
       - "--providers.file.watch=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      # Apply the combined IP allowlist to the websecure entrypoint globally
-      - "--entrypoints.websecure.http.middlewares=cf-and-private-allow@file"
-      - "--api.dashboard=true" # Enable the dashboard
-      - "--api.insecure=true" # Make dashboard accessible without auth (suitable for internal access)
-      - "--accesslog=true" # Enable access log
-      - "--accesslog.filepath=/logs/access.log" # Set access log file path inside container
-      - "--log.filepath=/logs/traefik.log" # Set traefik log file path inside container
-      # Add other static configurations if needed
-
+      - "--api.dashboard=true"
+      - "--api.insecure=true"
+      - "--log.level=DEBUG"
+      - "--log.filePath=/logs/traefik.log"
+      - "--accesslog=true"
+      - "--accesslog.filePath=/logs/access.log"
     ports:
-      - "8622:80"
-      - "8623:443"
-      - "8080:8080" # Expose dashboard port internally
-
+      - "8080:8080"   # dashboard
     volumes:
-      # Mount Docker socket
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      # Mount dynamic configuration directory relative to docker-compose.yml
-      - ./dynamic:/dynamic:ro
-      # Mount certificates directory relative to docker-compose.yml
-      - ./certs:/certs:ro
-      # Mount logs directory - Traefik will write logs here based on command args
+      - ./certs:/certs
       - ./logs:/logs
-
-    networks: # Add this section
-      - traefik-private # Assign to the custom network
-
-    # Optional: Add labels for Traefik dashboard if desired
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.yourdomain.com`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
-    #   - "traefik.http.routers.traefik-dashboard.service=api@internal"
-    #   - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
-    #   - "traefik.http.routers.traefik-dashboard.tls=true"
-    #   # Optional: Add middleware for basic auth
-    #   # - "traefik.http.routers.traefik-dashboard.middlewares=auth"
-    #   # - "traefik.http.middlewares.auth.basicauth.users=user:$$apr1$$...$$" # Generate with htpasswd
+      - ./dynamic:/dynamic:ro
+    networks:
+      - traefik-private
 
   whoami:
-    image: traefik/whoami # A simple service that returns request information
+    image: traefik/whoami
     container_name: whoami
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      # Define the router rule for the subdomain
-      - "traefik.http.routers.whoami.rule=Host(`stew.mehouse.casa`)"
-      # Use the websecure entrypoint (HTTPS)
-      - "traefik.http.routers.whoami.entrypoints=websecure"
-      # Enable TLS for this router (uses the default certificate defined in tls.yml)
-      - "traefik.http.routers.whoami.tls=true"
+      - "traefik.http.routers.whoami.rule=Host(`who.newbully.top`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+    networks:
+      - traefik-private
 
-    networks: # Add this section
-      - traefik-private # Assign to the custom network
-
-# Define the custom network
 networks:
   traefik-private:
     name: traefik-private
