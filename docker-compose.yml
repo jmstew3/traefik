@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   traefik:
-    image: traefik:v2.11 # Consider using a newer version like v3.x if appropriate
+    image: traefik:latest # Consider using a newer version like v3.x if appropriate
     container_name: traefik
     restart: unless-stopped
 
@@ -12,15 +12,18 @@ services:
       - "--providers.file.watch=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
+      # Apply the combined IP allowlist to the websecure entrypoint globally
+      - "--entrypoints.websecure.http.middlewares=cf-and-private-allow@file"
       - "--api.dashboard=true" # Enable the dashboard
       - "--api.insecure=true" # Make dashboard accessible without auth (suitable for internal access)
-      # - "--accesslog=true" # Disable stdout access log
-      - "--accesslog.filepath=/logs/access.log" # Enable access log file
-      # Add other static configurations if needed, e.g., logs
+      - "--accesslog=true" # Enable access log
+      - "--accesslog.filepath=/logs/access.log" # Set access log file path inside container
+      - "--log.filepath=/logs/traefik.log" # Set traefik log file path inside container
+      # Add other static configurations if needed
 
     ports:
-      - "80:80"
-      - "443:443"
+      - "8622:80"
+      - "8623:443"
       - "8080:8080" # Expose dashboard port internally
 
     volumes:
@@ -30,10 +33,11 @@ services:
       - ./dynamic:/dynamic:ro
       # Mount certificates directory relative to docker-compose.yml
       - ./certs:/certs:ro
-      # Mount logs directory
+      # Mount logs directory - Traefik will write logs here based on command args
       - ./logs:/logs
-      # Optional: Mount log file or directory
-      - ./logs/traefik.log:/traefik.log
+
+    networks: # Add this section
+      - traefik-private # Assign to the custom network
 
     # Optional: Add labels for Traefik dashboard if desired
     # labels:
@@ -53,13 +57,16 @@ services:
     labels:
       - "traefik.enable=true"
       # Define the router rule for the subdomain
-      - "traefik.http.routers.whoami.rule=Host(`who.mehouse.casa`)"
+      - "traefik.http.routers.whoami.rule=Host(`stew.mehouse.casa`)"
       # Use the websecure entrypoint (HTTPS)
       - "traefik.http.routers.whoami.entrypoints=websecure"
       # Enable TLS for this router (uses the default certificate defined in tls.yml)
       - "traefik.http.routers.whoami.tls=true"
 
-# Optional: Define networks if needed
-# networks:
-#   default:
-#     name: traefik-net
+    networks: # Add this section
+      - traefik-private # Assign to the custom network
+
+# Define the custom network
+networks:
+  traefik-private:
+    name: traefik-private
