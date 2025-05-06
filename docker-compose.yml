@@ -9,7 +9,7 @@ services:
     environment:
       - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
     networks:
-      - traefik-private
+      - traefik-tunnel
 
   traefik:
     image: traefik:latest
@@ -35,7 +35,8 @@ services:
       - ./logs:/logs
       - ./dynamic:/dynamic:ro
     networks:
-      - traefik-private
+      - traefik-tunnel
+      - traefik-general
 
   whoami:
     image: traefik/whoami
@@ -46,8 +47,10 @@ services:
       - "traefik.http.routers.whoami.rule=Host(`who.newbully.top`)"
       - "traefik.http.routers.whoami.entrypoints=web"
     networks:
-      - traefik-private
+      - traefik-general
 
 networks:
-  traefik-private:
-    name: traefik-private
+  traefik-tunnel:
+    name: traefik-tunnel
+  traefik-general:
+    name: traefik-general
