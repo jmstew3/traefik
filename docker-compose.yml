@@ -9,7 +9,7 @@ services:
     environment:
       - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
     networks:
-      - traefik-tunnel
+      - ${RPROXY_TUNNEL}
 
   traefik:
     image: traefik:latest
@@ -28,15 +28,15 @@ services:
       - "--accesslog=true"
       - "--accesslog.filePath=/logs/access.log"
     ports:
-      - "8080:8080"   # dashboard
+      - "${TRAEFIK_DASHBOARD_HOST_IP:-127.0.0.1}:${TRAEFIK_DASHBOARD_HOST_MAPPED_PORT:-}:${TRAEFIK_DASHBOARD_CONTAINER_PORT:-8080}"   # dashboard
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./certs:/certs
       - ./logs:/logs
       - ./dynamic:/dynamic:ro
     networks:
-      - traefik-tunnel
-      - traefik-general
+      - ${RPROXY_TUNNEL}
+      - ${RPROXY_GENERAL}
 
   whoami:
     image: traefik/whoami
@@ -44,13 +44,16 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`who.newbully.top`)"
+      - "traefik.http.routers.whoami.rule=Host(`who.${BASE_DOMAIN_1}`)"
       - "traefik.http.routers.whoami.entrypoints=web"
     networks:
-      - traefik-general
+      - ${RPROXY_GENERAL}
 
 networks:
   traefik-tunnel:
-    name: traefik-tunnel
+    external: true
+    name: ${RPROXY_TUNNEL}
+
   traefik-general:
-    name: traefik-general
+    external: true
+    name: ${RPROXY_GENERAL}
