@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   cloudflared:
     image: cloudflare/cloudflared:latest
@@ -50,10 +48,10 @@ services:
       - ${RPROXY_GENERAL}
 
 networks:
-  traefik-tunnel:
+  traefik:
     external: true
-    name: ${RPROXY_TUNNEL}
+    name: traefik
 
-  traefik-general:
+  traefik_general:
     external: true
-    name: ${RPROXY_GENERAL}
+    name: traefik-general
